@@ -21,13 +21,14 @@ services:
   app:
     build: .
     #command: python3 manage.py runserver 0.0.0.0:8000
-    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 --workers 3 --reload
+    command: gunicorn forum.wsgi:application --bind 0.0.0.0:8000 --workers 3 --reload
     networks:
       main:
         aliases:
           - app
     volumes:
       - .:/code
+    working_dir: /code/forum
     ports:
       - "8000:8000"
     depends_on:
