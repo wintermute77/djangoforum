@@ -22,3 +22,7 @@ __pycache__/
 *.pyc
 __pycache__/
 local_settings.py
+
+
+### App ###
+/static/
