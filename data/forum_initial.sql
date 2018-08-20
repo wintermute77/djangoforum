@@ -1,3 +1,4 @@
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
 -- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
 --
 -- Host: localhost    Database: forum
@@ -14,8 +15,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-USE forum;
 
 --
 -- Table structure for table `auth_group`
@@ -118,7 +117,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +126,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$100000$YObTXqwUEUhm$I+Xap3Df9UoZPYXI4oB+ZAJuAQHh4iQbcaskSmGOdNg=','2018-07-29 08:17:15.626421',1,'admin','','','ben.r.casey@gmail.com',1,1,'2018-07-29 08:17:06.867378');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$100000$YObTXqwUEUhm$I+Xap3Df9UoZPYXI4oB+ZAJuAQHh4iQbcaskSmGOdNg=','2018-08-19 08:34:35.654436',1,'admin','','','ben.r.casey@gmail.com',1,1,'2018-07-29 08:17:06.867378'),(2,'pbkdf2_sha256$100000$GxeWgxOGJIO3$08rQpUs0Te5BkF8xGtG2iJDemCXi6U8JUmMPM5ZBMR8=','2018-08-01 19:50:10.587372',0,'ben','','','',0,1,'2018-08-01 19:24:42.134548'),(3,'pbkdf2_sha256$100000$PO9Tx71LZAXx$4B97KFXM96CqpDySKOy+KTz+X+N3hROtchemqu3yNvc=','2018-08-01 19:43:16.850086',0,'bob','','','',0,1,'2018-08-01 19:43:16.626068');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +207,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,6 +216,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+INSERT INTO `django_admin_log` VALUES (1,'2018-08-01 19:36:02.657910','1','Q&A',1,'[{\"added\": {}}]',7,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,7 +294,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('s482rmp6zzdochy8v82oxjla9io5fh9k','NDNkMzFiZmU2NDYyYTE1ODhmYTFjMGM0M2RjNjI5ZGRlOGU2YjE4MDp7Il9hbm9ueW1vdXNfZm9ydW1fa2V5IjoiNGFkOTJkMTAxOTQ4NGNhN2E5ZDhhNTI5NzM3Y2Y5NmYiLCJfYXV0aF91c2VyX2lkIjoiMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNjVkOTYyZmFlY2M1NDAxNWMzOWUzYWFjODg0ZGI5ZTliMTVkMDVhZSJ9','2018-08-12 08:17:15.631092');
+INSERT INTO `django_session` VALUES ('60vkdk7jo05qvigxsjgp6h2dl4h2l11n','Y2MyNDZiMzFiMmMxNDIyMzU1YzMzZTk4NmQzZTU3NmEzZWQ3NTMyOTp7Il9hbm9ueW1vdXNfZm9ydW1fa2V5IjoiZWNiODJmYjA0YzdkNDRmOTllZTcyZTViNmRkMWEwNDQiLCJfYXV0aF91c2VyX2lkIjoiMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNjVkOTYyZmFlY2M1NDAxNWMzOWUzYWFjODg0ZGI5ZTliMTVkMDVhZSJ9','2018-09-02 08:34:35.658546'),('eqs5jgypmc6l6a6yjba20tu11gmveehv','MzI3YWIwNzhmODJiZjViMjdkMjZmYmY5ZDU2YjNiZDM2MjE0MzQxZTp7Il9hbm9ueW1vdXNfZm9ydW1fa2V5IjoiNTVjZjI4MTg2YzEwNDNjMWFiZmY4Y2ViMTg0MTIzMzgifQ==','2018-09-02 08:36:15.475601'),('pd2kbtzks0thkb2c2d4vcouddu7vy296','MzZlZjk3ZGJjOTczOTdjNTQyNjA3OTA2MTU2YTIyOTM4ZGFkOGYxNTp7Il9hbm9ueW1vdXNfZm9ydW1fa2V5IjoiNmFjNmVjYTlhMTUwNDZlYWE2ZDJiZjM5Y2NjODBlYjUiLCJfYXV0aF91c2VyX2lkIjoiMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNjVkOTYyZmFlY2M1NDAxNWMzOWUzYWFjODg0ZGI5ZTliMTVkMDVhZSJ9','2018-08-15 19:23:35.259134'),('s482rmp6zzdochy8v82oxjla9io5fh9k','NDNkMzFiZmU2NDYyYTE1ODhmYTFjMGM0M2RjNjI5ZGRlOGU2YjE4MDp7Il9hbm9ueW1vdXNfZm9ydW1fa2V5IjoiNGFkOTJkMTAxOTQ4NGNhN2E5ZDhhNTI5NzM3Y2Y5NmYiLCJfYXV0aF91c2VyX2lkIjoiMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNjVkOTYyZmFlY2M1NDAxNWMzOWUzYWFjODg0ZGI5ZTliMTVkMDVhZSJ9','2018-08-12 08:17:15.631092'),('sb3agoigcoc4uhoxlaimrf5sf3idtqph','YjQ5ZjZjOWExMmRjNzdkMmFjNzc2YWVlMDc1Nzc2YTNiZDhiNDViNDp7Il9hbm9ueW1vdXNfZm9ydW1fa2V5IjoiMzExNGU0NzhhNmRiNDAwYWExMGU2NTZmOTA3MGU3ZWYiLCJfYXV0aF91c2VyX2lkIjoiMiIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiYmQ3NWI4YzA3OTE3ZGFiNjIwNWEzYzNiMDAwOWVlZWI4ZjVkNGYxYSJ9','2018-08-15 19:50:10.620042');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,7 +358,7 @@ CREATE TABLE `forum_conversation_post` (
   CONSTRAINT `forum_conversation_p_topic_id_f6aaa418_fk_forum_con` FOREIGN KEY (`topic_id`) REFERENCES `forum_conversation_topic` (`id`),
   CONSTRAINT `forum_conversation_post_poster_id_19c4e995_fk_auth_user_id` FOREIGN KEY (`poster_id`) REFERENCES `auth_user` (`id`),
   CONSTRAINT `forum_conversation_post_updated_by_id_86093355_fk_auth_user_id` FOREIGN KEY (`updated_by_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,6 +367,7 @@ CREATE TABLE `forum_conversation_post` (
 
 LOCK TABLES `forum_conversation_post` WRITE;
 /*!40000 ALTER TABLE `forum_conversation_post` DISABLE KEYS */;
+INSERT INTO `forum_conversation_post` VALUES (1,'2018-08-01 19:40:32.915110','2018-08-01 19:40:32.915224','172.19.0.1','This is a post in the forum','This is the message body.',NULL,1,NULL,0,'<p>This is the message body.</p>',2,1,NULL,NULL,0),(2,'2018-08-01 19:44:02.569120','2018-08-01 19:44:02.569224','172.19.0.1','Re: This is a post in the forum','This is a reply to the post.',NULL,1,NULL,0,'<p>This is a reply to the post.</p>',3,1,NULL,NULL,1);
 /*!40000 ALTER TABLE `forum_conversation_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -406,7 +407,7 @@ CREATE TABLE `forum_conversation_topic` (
   CONSTRAINT `forum_conversation_t_last_post_id_e14396a2_fk_forum_con` FOREIGN KEY (`last_post_id`) REFERENCES `forum_conversation_post` (`id`),
   CONSTRAINT `forum_conversation_topic_forum_id_e9cfe592_fk_forum_forum_id` FOREIGN KEY (`forum_id`) REFERENCES `forum_forum` (`id`),
   CONSTRAINT `forum_conversation_topic_poster_id_0dd4fa07_fk_auth_user_id` FOREIGN KEY (`poster_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -415,6 +416,7 @@ CREATE TABLE `forum_conversation_topic` (
 
 LOCK TABLES `forum_conversation_topic` WRITE;
 /*!40000 ALTER TABLE `forum_conversation_topic` DISABLE KEYS */;
+INSERT INTO `forum_conversation_topic` VALUES (1,'2018-08-01 19:40:32.890625','2018-08-01 19:44:02.584061','This is a post in the forum','this-is-a-post-in-the-forum',0,0,1,2,10,'2018-08-01 19:44:02.569120',1,2,1,2);
 /*!40000 ALTER TABLE `forum_conversation_topic` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -487,7 +489,7 @@ CREATE TABLE `forum_forum` (
   KEY `forum_forum_last_post_id_81b59e37_fk_forum_conversation_post_id` (`last_post_id`),
   CONSTRAINT `forum_forum_last_post_id_81b59e37_fk_forum_conversation_post_id` FOREIGN KEY (`last_post_id`) REFERENCES `forum_conversation_post` (`id`),
   CONSTRAINT `forum_forum_parent_id_22edea05_fk_forum_forum_id` FOREIGN KEY (`parent_id`) REFERENCES `forum_forum` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -496,6 +498,7 @@ CREATE TABLE `forum_forum` (
 
 LOCK TABLES `forum_forum` WRITE;
 /*!40000 ALTER TABLE `forum_forum` DISABLE KEYS */;
+INSERT INTO `forum_forum` VALUES (1,'2018-08-01 19:36:02.653454','2018-08-01 19:44:02.601383','Q&A','qa','A general Q&A forum.','',NULL,0,0,0,'2018-08-01 19:44:02.569120',1,'<p>A general Q&amp;A forum.</p>',1,2,1,0,NULL,2,1,2);
 /*!40000 ALTER TABLE `forum_forum` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -516,7 +519,7 @@ CREATE TABLE `forum_member_forumprofile` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`),
   CONSTRAINT `forum_member_forumprofile_user_id_9d6b9b6b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -525,6 +528,7 @@ CREATE TABLE `forum_member_forumprofile` (
 
 LOCK TABLES `forum_member_forumprofile` WRITE;
 /*!40000 ALTER TABLE `forum_member_forumprofile` DISABLE KEYS */;
+INSERT INTO `forum_member_forumprofile` VALUES (1,'',NULL,1,NULL,2),(2,'',NULL,1,NULL,3);
 /*!40000 ALTER TABLE `forum_member_forumprofile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -613,7 +617,7 @@ CREATE TABLE `forum_permission_userforumpermission` (
   CONSTRAINT `forum_permission_use_forum_id_f781f4d6_fk_forum_for` FOREIGN KEY (`forum_id`) REFERENCES `forum_forum` (`id`),
   CONSTRAINT `forum_permission_use_permission_id_9090e930_fk_forum_per` FOREIGN KEY (`permission_id`) REFERENCES `forum_permission_forumpermission` (`id`),
   CONSTRAINT `forum_permission_use_user_id_8106d02d_fk_auth_user` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -622,6 +626,7 @@ CREATE TABLE `forum_permission_userforumpermission` (
 
 LOCK TABLES `forum_permission_userforumpermission` WRITE;
 /*!40000 ALTER TABLE `forum_permission_userforumpermission` DISABLE KEYS */;
+INSERT INTO `forum_permission_userforumpermission` VALUES (1,1,1,NULL,2,NULL),(2,1,1,NULL,1,NULL);
 /*!40000 ALTER TABLE `forum_permission_userforumpermission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -644,7 +649,7 @@ CREATE TABLE `forum_polls_topicpoll` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `topic_id` (`topic_id`),
   CONSTRAINT `forum_polls_topicpol_topic_id_1b827b83_fk_forum_con` FOREIGN KEY (`topic_id`) REFERENCES `forum_conversation_topic` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -653,6 +658,7 @@ CREATE TABLE `forum_polls_topicpoll` (
 
 LOCK TABLES `forum_polls_topicpoll` WRITE;
 /*!40000 ALTER TABLE `forum_polls_topicpoll` DISABLE KEYS */;
+INSERT INTO `forum_polls_topicpoll` VALUES (1,'2018-08-01 19:40:32.952397','2018-08-01 19:40:32.955577','',0,1,0,1);
 /*!40000 ALTER TABLE `forum_polls_topicpoll` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -730,7 +736,7 @@ CREATE TABLE `forum_tracking_forumreadtrack` (
   KEY `forum_tracking_forumreadtrack_mark_time_72eec39e` (`mark_time`),
   CONSTRAINT `forum_tracking_forum_forum_id_bbd3fb47_fk_forum_for` FOREIGN KEY (`forum_id`) REFERENCES `forum_forum` (`id`),
   CONSTRAINT `forum_tracking_forumreadtrack_user_id_932d4605_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -739,6 +745,7 @@ CREATE TABLE `forum_tracking_forumreadtrack` (
 
 LOCK TABLES `forum_tracking_forumreadtrack` WRITE;
 /*!40000 ALTER TABLE `forum_tracking_forumreadtrack` DISABLE KEYS */;
+INSERT INTO `forum_tracking_forumreadtrack` VALUES (1,'2018-08-01 19:47:09.679970',1,2),(2,'2018-08-01 19:44:02.702905',1,3);
 /*!40000 ALTER TABLE `forum_tracking_forumreadtrack` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -781,4 +788,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-29  8:28:39
+-- Dump completed on 2018-08-19  8:59:18

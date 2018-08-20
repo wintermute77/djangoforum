@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+MACHINA_FORUM_NAME = 'An Example User Forum'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -40,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'core',
+
     # Machina related apps:
     'mptt',
     'haystack',
@@ -66,6 +70,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates/machina/'),# Needed to put the machina files inside their own 'machina' directory
             MACHINA_MAIN_TEMPLATE_DIR,
         ],
         'APP_DIRS': True,
@@ -143,6 +149,7 @@ from machina import MACHINA_MAIN_STATIC_DIR
 
 STATICFILES_DIRS = [
     MACHINA_MAIN_STATIC_DIR,
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 
@@ -165,3 +172,21 @@ CACHES = {
         'LOCATION': '/tmp',
     },
 }
+
+
+# Machina Forum
+MACHINA_DEFAULT_AUTHENTICATED_USER_FORUM_PERMISSIONS = [
+    'can_see_forum',
+    'can_read_forum',
+    'can_start_new_topics',
+    'can_reply_to_topics',
+    'can_edit_own_posts',
+    'can_post_without_approval',
+    'can_create_polls',
+    'can_vote_in_polls',
+    'can_download_file',
+]
+
+LOGIN_REDIRECT_URL = '/forum/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
